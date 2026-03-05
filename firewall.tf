@@ -1,3 +1,5 @@
+variable "project" {}
+
 variable "firewall_rules" {
   type = map(object({
     protocol = string
@@ -16,6 +18,7 @@ variable "firewall_rules" {
 }
 
 resource "google_compute_firewall" "dynamic_ingress" {
+  project = var.project
   name    = "example-dynamic-firewall"
   network = "default"
 
